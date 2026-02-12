@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WNKA OS | Central Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com');
+        body { background-color: #050505; color: #a1a1aa; font-family: 'Fira Code', monospace; scroll-behavior: smooth; }
+        .glow-blue { box-shadow: 0 0 30px rgba(37, 99, 235, 0.1); }
+        .terminal-bg { background: linear-gradient(180deg, #0a0a0a 0%, #050505 100%); }
+        .btn-wnka { transition: all 0.3s; border: 1px solid #27272a; text-transform: uppercase; letter-spacing: 0.1em; font-size: 10px; }
+        .btn-wnka:hover { border-color: #3b82f6; color: #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+        .sys-info-scroll::-webkit-scrollbar { width: 4px; }
+        .sys-info-scroll::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+        .status-busy { animation: blink 1s infinite; color: #ef4444; font-weight: bold; }
+    </style>
+</head>
+<body class="selection:bg-blue-900 selection:text-white">
+
+    <!-- NAVIGATION -->
+    <nav class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-lg border-b border-zinc-900 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="text-white font-bold tracking-tighter">WNKA<span class="text-blue-600">_</span>OS</div>
+                <div class="text-[9px] uppercase tracking-widest border-l border-zinc-800 pl-4 hidden sm:block">
+                    Status: <span class="status-busy">BUSY</span>
+                </div>
+            </div>
+            
+            <!-- Сюда мы добавили кнопку скачивания -->
+            <div class="hidden md:flex items-center space-x-4">
+                <a href="https://github.com/goloforez228-lgtm/Wnka-os-x16/releases/tag/Realeze" target="_blank" class="btn-wnka px-4 py-2 rounded text-emerald-400 border-emerald-500/50 hover:bg-emerald-500/10">
+                    Download
+                </a>
+                <a href="#showcase" class="btn-wnka px-4 py-2 rounded">Showcase</a>
+                <a href="#specs" class="btn-wnka px-4 py-2 rounded">System Specs</a>
+            </div>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 mt-12">
+    <!-- Кнопка скачивания локального файла -->
+    <a href="wnka_os.img" download class="btn-wnka px-10 py-4 rounded-lg bg-blue-600 text-white font-bold border-none hover:bg-blue-500 transition flex items-center justify-center gap-2">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        Download WNKA_OS.IMG
+    </a>
+    <a href="#specs" class="btn-wnka px-10 py-4 rounded-lg bg-zinc-900/50">Documentation</a>
+</div>
+
+
+            <a href="https://dalink.to/wnka_studio" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white text-[10px] px-6 py-2 rounded uppercase font-bold transition shadow-lg shadow-blue-900/40">
+                Donate / Support
+            </a>
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <header class="pt-48 pb-24 px-6 text-center">
+        <div class="inline-block px-4 py-1 border border-blue-900/50 rounded-full text-[10px] text-blue-500 mb-8 uppercase tracking-widest bg-blue-900/10">
+            Kernel Build: v0.2.8g (Feb 12 2026)
+        </div>
+        <h1 class="text-5xl md:text-8xl font-black text-white mb-8 tracking-tighter leading-none">WNKA STUDIO<br><span class="text-zinc-800 uppercase text-4xl md:text-6xl">Official Portal</span></h1>
+        <div class="flex flex-col sm:flex-row justify-center gap-4 mt-12">
+            <a href="https://dalink.to/wnka_studio" class="btn-wnka px-10 py-4 rounded-lg bg-white text-black font-bold border-none hover:bg-blue-600 hover:text-white transition">Get Started</a>
+            <a href="#specs" class="btn-wnka px-10 py-4 rounded-lg bg-zinc-900/50">Documentation</a>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6 space-y-40 pb-40">
+
+        <!-- SHOWCASE SECTION -->
+        <section id="showcase" class="space-y-24">
+            <!-- Screenshot 1 -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="rounded-2xl overflow-hidden border border-zinc-800 glow-blue group">
+                    <img src="screenshot_20260212_181645.jpg" class="w-full grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+                <div>
+                    <h3 class="text-blue-500 text-xs font-bold uppercase mb-3 tracking-widest">01 / System Info</h3>
+                    <h2 class="text-white text-3xl mb-6 uppercase font-bold tracking-tighter">Hardware Fetch</h2>
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-8">Модуль сбора данных о системе в 16-битном режиме. Детекция VESA, CPUID и проверка памяти в реальном времени.</p>
+                    <a href="https://dalink.to/wnka_studio" class="text-xs text-blue-500 border-b border-blue-900 pb-1 hover:text-white hover:border-white transition">More info</a>
+                </div>
+            </div>
+
+            <!-- Screenshot 2 -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="order-2 lg:order-1 text-right">
+                    <h3 class="text-emerald-500 text-xs font-bold uppercase mb-3 tracking-widest">02 / Development</h3>
+                    <h2 class="text-white text-3xl mb-6 uppercase font-bold tracking-tighter">Hybrid IDE 0.5</h2>
+                    <p class="text-zinc-500 text-sm leading-relaxed mb-8">Собственная среда разработки. Написание и выполнение скриптов WNC (Hybrid C#/Python style) прямо внутри ОС.</p>
+                </div>
+                <div class="order-1 lg:order-2 rounded-2xl overflow-hidden border border-zinc-800 group">
+                    <img src="screenshot_20260212_181734.jpg" class="w-full grayscale group-hover:grayscale-0 transition duration-700">
+                </div>
+            </div>
+
+            <!-- Screenshot 3 -->
+            <div class="space-y-8 text-center max-w-4xl mx-auto">
+                <h3 class="text-indigo-500 text-xs font-bold uppercase tracking-widest">03 / Dashboard</h3>
+                <h2 class="text-white text-3xl uppercase font-bold tracking-tighter">Total Control UI</h2>
+                <div class="rounded-2xl overflow-hidden border border-zinc-800 shadow-2xl shadow-indigo-900/10">
+                    <img src="screenshot_20260212_181816.jpg" class="w-full">
+                </div>
+            </div>
+        </section>
+
+        <!-- SYSTEM SPECS (Logs) -->
+        <section id="specs" class="space-y-8">
+            <div class="flex items-center justify-between">
+                <h2 class="text-white text-xl font-bold uppercase tracking-tighter italic font-mono">_System.Manifest.Logs</h2>
+                <span class="text-[9px] text-zinc-700 uppercase tracking-widest">Build 0.2.8.G</span>
+            </div>
+            <div class="terminal-bg border border-zinc-800 rounded-2xl p-8 relative">
+                <div class="sys-info-scroll h-[450px] overflow-y-scroll pr-6 text-[11px] leading-loose text-zinc-600 font-mono">
+                    <p class="text-blue-600 mb-2">>>> WNKA_OS INITIALIZATION SEQUENCE STARTING...</p>
+                    <p>[OK] CPU_VENDOR: AUTHENTICAMD / INTEL_CORE_DETECTED</p>
+                    <p>[OK] VESA_BIOS_EXT_3.0_DETECTED_0x000B8000</p>
+                    <p>[OK] KERNEL_LOADED: 0x0000:0x7C00 -> 0x0000:0x1000</p>
+                    <p>[OK] RTC_CLOCK_SYNC: 18:18:00</p>
+                    <p>[INFO] INITIALIZING WNC_ENGINE_V3...</p>
+                    <p class="text-emerald-600">[OK] ENGINE_STATUS: OPERATIONAL</p>
+                    <p>[WNC] DICTIONARY_LOAD: OK (42 TOKENS)</p>
+                    <p>[WNC] ALIAS: USING SYS = SYSTEM.CMD</p>
+                    <br>
+                    <script>
+                        const modules = ["GFX", "SND", "MEM", "DISK", "BUS", "USB", "NET", "DMA"];
+                        for(let i=1; i<=140; i++) {
+                            let mod = modules[Math.floor(Math.random() * modules.length)];
+                            document.write(`<p>[LOG_${1000+i}] ${mod}_MODULE_0x${i.toString(16).toUpperCase()}... CHECK SUCCESSFUL</p>`);
+                        }
+                    </script>
+                    <p class="text-white mt-8 border-t border-zinc-900 pt-4">--- END OF BOOT SEQUENCE ---</p>
+                </div>
+                <div class="absolute bottom-6 right-10 text-[9px] text-blue-900 font-bold uppercase tracking-widest bg-black/50 px-2">Total lines: 150+</div>
+            </div>
+        </section>
+
+        <div class="hidden md:flex items-center space-x-4">
+    <!-- Новая кнопка в меню -->
+    <a href="https://github.com/goloforez228-lgtm/Wnka-os-x16/releases/tag/Realeze" target="_blank" class="btn-wnka px-4 py-2 rounded text-emerald-400 border-emerald-900/50 hover:border-emerald-500">
+        Download v0.2.8g
+    </a>
+    <a href="#showcase" class="btn-wnka px-4 py-2 rounded">Showcase</a>
+    <a href="#specs" class="btn-wnka px-4 py-2 rounded">System Specs</a>
+</div>
+
+
+        <!-- DONATE SECTION -->
+        <section class="py-32 border-t border-zinc-900 text-center">
+            <div class="max-w-2xl mx-auto">
+                <h2 class="text-white text-4xl font-black mb-6 uppercase tracking-tighter italic">Support the Creator</h2>
+                <p class="text-zinc-500 mb-12 text-sm leading-relaxed">Разработка ОС на ассемблере требует времени и усилий. Если вам нравится Wnka-OS, вы можете поддержать проект донатом. Все средства идут на развитие ядра и поддержку серверов с покупкой оборудования для теста ос на реальном железе.</p>
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                    <a href="https://dalink.to/wnka_studio" target="_blank" class="w-full sm:w-auto bg-blue-600 hover:bg-white hover:text-black text-white px-12 py-5 rounded-full font-black text-sm transition-all duration-500 transform hover:scale-105 shadow-2xl shadow-blue-900/40">
+                        DONATE VIA DALINK
+                    </a>
+                </div>
+                <p class="text-zinc-700 mt-10 text-[9px] uppercase tracking-[0.3em]">Thank you for your support!</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="p-16 border-t border-zinc-950 text-center bg-black/50">
+        <div class="mb-8">
+            <a href="https://dalink.to/wnka_studio" class="text-xs text-zinc-600 hover:text-blue-500 transition mx-4">GitHub</a>
+            <a href="https://dalink.to/wnka_studio" class="text-xs text-zinc-600 hover:text-blue-500 transition mx-4">Telegram</a>
+            <a href="https://dalink.to/wnka_studio" class="text-xs text-zinc-600 hover:text-blue-500 transition mx-4">Legal</a>
+        </div>
+        <p class="text-[9px] text-zinc-800 uppercase tracking-[1.2em]">Wnka System Studio &copy; 2026</p>
+    </footer>
+
+</body>
+</html>
